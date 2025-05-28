@@ -1,9 +1,38 @@
 :root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --vn-primary: #FF6B6B;
+  --vn-secondary: #4ECDC4;
+  --vn-accent: #FFD93D;
+  --vn-dark: #23213a;
+  --vn-light-bg: #f7f8fa;
+  --vn-gradient: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+  --kavia-orange: #FF6B6B;
+  --kavia-dark: #23213a;
+  --text-color: #202124;
+  --text-secondary: #5a6a7a;
+  --border-color: #ececec;
+  --card-bg: #fff;
+  --shadow: 0 2px 10px 0 rgba(0,0,0,0.07);
+}
+
+.darkmode {
+  --vn-gradient: linear-gradient(135deg, #292248 0%, #4ECDC4 100%) !important;
+  --kavia-dark: #14121d;
+  --text-color: #f7f7f7 !important;
+  --text-secondary: #ababab !important;
+  --border-color: #3d3a4f !important;
+  --card-bg: #23213a !important;
+  --shadow: 0 2px 16px 0 rgba(20,15,60,0.22);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: var(--vn-gradient);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.2s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
