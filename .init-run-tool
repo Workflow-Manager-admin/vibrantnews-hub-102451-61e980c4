@@ -1,0 +1,4 @@
+{
+    "command": "PORT=<port> BROWSER=none npm start",
+    "working_directory": "/home/kavia/workspace/code-generation/vibrantnews-hub-102451-61e980c4/vibrantnews_hub_ui"
+}
