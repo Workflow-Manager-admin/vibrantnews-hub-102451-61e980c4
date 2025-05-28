@@ -1,37 +1,49 @@
-import React from 'react';
-import './App.css';
+import React, { useContext, useState } from "react";
+import "./App.css";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { NewsProvider, NewsContext } from "./contexts/NewsContext";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import Navbar from "./components/Navbar";
+import Onboarding from "./components/Onboarding";
+import CategoryFilter from "./components/CategoryFilter";
+import NewsFeed from "./components/NewsFeed";
+import Bookmarks from "./components/Bookmarks";
 
-function App() {
+function VibrantNewsApp() {
+  const { onboarded } = useContext(NewsContext);
+  const [section, setSection] = useState("feed");
+
+  // Show onboarding modal if not finished
+  if (!onboarded)
+    return (
+      <div className="app">
+        <Onboarding />
+      </div>
+    );
+
   return (
     <div className="app">
-      <nav className="navbar">
-        <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <div className="logo">
-              <span className="logo-symbol">*</span> KAVIA AI
-            </div>
-            <button className="btn">Template Button</button>
-          </div>
-        </div>
-      </nav>
-
+      <Navbar showSection={setSection} activeSection={section} />
       <main>
-        <div className="container">
-          <div className="hero">
-            <div className="subtitle">AI Workflow Manager Template</div>
-            
-            <h1 className="title">vibrantnews_hub_ui</h1>
-            
-            <div className="description">
-              Start building your application.
-            </div>
-            
-            <button className="btn btn-large">Button</button>
-          </div>
+        <div className="container" style={{ marginTop: 68, marginBottom: 36 }}>
+          <CategoryFilter />
+          {section === "feed" && <NewsFeed />}
+          {section === "bookmarks" && <Bookmarks />}
         </div>
       </main>
     </div>
   );
 }
 
-export default App;
+// PUBLIC_INTERFACE
+export default function App() {
+  return (
+    <ThemeProvider>
+      <NewsProvider>
+        <NotificationProvider>
+          <VibrantNewsApp />
+        </NotificationProvider>
+      </NewsProvider>
+    </ThemeProvider>
+  );
+}
